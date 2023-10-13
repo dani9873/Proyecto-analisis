@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('manager', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('contacto'); // Puedes definir el formato según tus necesidades (teléfono, correo, etc.)
+            $table->string('usuario');
+            $table->string('contraseña');
             $table->timestamps();
         });
     }

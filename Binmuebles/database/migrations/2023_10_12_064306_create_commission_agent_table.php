@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('commission_agent', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('contacto'); 
+            $table->string('usuario');
+            $table->string('contraseña');
             $table->timestamps();
         });
     }
