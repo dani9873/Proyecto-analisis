@@ -10,6 +10,11 @@ body, html {
 .modal-xl {
     max-width: 90%; /* Establece el ancho máximo que desees */
 }
+/* modificacionReg.css */
+.welcome-text {
+    color: black; /* Cambia el color del texto a negro */
+    /* Agrega otros estilos según sea necesario */
+}
 
 body {
     display: flex;
