@@ -57,8 +57,7 @@ class LoginController extends Controller
     
         // Redirigir a la vista de inicio de sesión después del registro exitoso
         return redirect(route('login'))->with('registration_success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-    }
-    
+    }  
 
 
 public function logout(Request $request)

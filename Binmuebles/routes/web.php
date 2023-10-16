@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes for your appSSSlication. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
@@ -20,6 +22,11 @@ Route::get('/privada', function () {
 
 Route::get('/', function () {
     return redirect()->route('login');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/client', ClientController::class);
+    Route::view('/privada', 'secret')->name('privada');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::middleware('auth')->group(function () {
