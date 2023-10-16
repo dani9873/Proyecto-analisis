@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Productscontroller;
+
 
 
 /*
@@ -16,8 +18,6 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-<<<<<<< HEAD
-=======
 //RUTAS ANDY
 Route::resource('/products',Productscontroller::class);
 Route::middleware('auth')->group(function () {
@@ -32,21 +32,16 @@ Route::middleware('auth')->group(function () {
 
 
 //RUTAS LOGIN
-
->>>>>>> 18247f2 (CAMBIOS ÚLTIMOS PARTE 1)
 Route::get('/privada', function () {
     return view('privada');
 })->middleware(['auth', 'verified'])->name('privada');
-
 Route::get('/', function () {
     return redirect()->route('products.index');
 });
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/client', ClientController::class);
     Route::view('/privada', 'secret')->name('privada');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -15,17 +15,14 @@
 <body> 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">CRUD de Clientes</a>
+            <a class="navbar-brand" href="#">BINMUEBLES</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/client">Agregar Cliente</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/client/create">Mostrar Clientes</a>
+                        <a class="nav-link" href="/client">Mostrar info. Propiedades</a>
                     </li>
                     <li class="nav-item ml-auto text-danger">
                         <form method="POST" action="{{ route('logout') }}">
