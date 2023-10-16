@@ -16,12 +16,30 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+<<<<<<< HEAD
+=======
+//RUTAS ANDY
+Route::resource('/products',Productscontroller::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+
+
+
+
+//RUTAS LOGIN
+
+>>>>>>> 18247f2 (CAMBIOS ÚLTIMOS PARTE 1)
 Route::get('/privada', function () {
     return view('privada');
 })->middleware(['auth', 'verified'])->name('privada');
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('products.index');
 });
 Route::middleware(['auth'])->group(function () {
     Route::resource('/client', ClientController::class);

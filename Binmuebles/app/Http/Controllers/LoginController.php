@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Productscontroller;
 
 class LoginController extends Controller
 {
@@ -56,7 +57,7 @@ class LoginController extends Controller
         $user->save();
     
         // Redirigir a la vista de inicio de sesión después del registro exitoso
-        return redirect(route('login'))->with('registration_success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+        return redirect(route('products.index'))->with('registration_success', 'Registro exitoso. Ahora puedes iniciar sesión.');
     }  
 
 

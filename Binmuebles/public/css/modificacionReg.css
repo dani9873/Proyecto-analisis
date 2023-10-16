@@ -1,0 +1,130 @@
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    height: 100%;
+}
+/* En tu archivo de estilos CSS personalizado */
+.modal-xl {
+    max-width: 90%; /* Establece el ancho máximo que desees */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex-fill {
+    flex: 1;
+  }
+header {
+    background-color: #ff8c00;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    text-transform: uppercase;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.search-bar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #333;
+}
+
+.search-bar button {
+    background-color: #ff8c00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-card {
+    display: inline-block;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    word-wrap: break-word; /* Añade esta línea */
+}
+
+.image-card img {
+    width: 100%;
+}
+
+.image-card h2 {
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+.image-card p {
+    margin: 10px;
+}
+
+.image-card span {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#myForm, #creacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer {
+    background-color: #ff8c00;
+  }
+  
+  
