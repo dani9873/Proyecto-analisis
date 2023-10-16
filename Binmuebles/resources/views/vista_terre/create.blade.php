@@ -18,7 +18,7 @@
             <input type="text" class="form-control" id="descripcion" name="descripcion"/><br/>
         </div>
         <div class="form-group">
-            <label for "precio">Precio</label>
+            <label for="precio">Precio</label>
             <input type="text" class="form-control" id="precio" name="precio"/>
         </div>
         <div class="form-group">       
@@ -28,7 +28,7 @@
 
         <div class="form-group"> 
             <label>Subir foto</label>      
-            <input type="file" class="form-control-file" accept="storage/app/public/images/*" name="demostracion"/>   
+            <input type="file" class="form-control-file" accept="storage/app/public/images/*" name="demostracion" multiple/>   
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>

@@ -34,7 +34,7 @@
     </div>
 
     <div class="form-group">       
-        <label for="demostracion">Sustituir Fotos</label>
+        <label for="demostracion">Subir Fotos</label>
         <input type="file" class="form-control" id="demostracion" name="demostracion" value="{{$products->demostracion}}">   
     </div>
 

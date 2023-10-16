@@ -4,7 +4,7 @@
 
 
 <div>
-   <a href="{{route('ter.create')}}" class="btn btn-success" >Agregar inmueble</a>
+   <a href="{{route('ter.create')}}" class="btn btn-success">Agregar inmueble</a>
 </div>
 <table class="table">
    <thead>
@@ -31,8 +31,12 @@
          <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
          </td>
         <td>
-         <img style="width: 100px; height: auto;" src="{{ asset('storage/images/'. $producto->demostracion) }}" alt="Demostración del producto">
 
+         @if ($producto->demostracion)
+                @foreach ($producto->demostracion as $imagen)
+                    <img style="width: 100px; height: auto;" src="{{ asset('storage/app/public/images/' . $imagen) }}" alt="Demostración del producto">
+                @endforeach
+            @endif
          <td>
          <a href="{{route('ter.edit',$producto->id)}} " class="btn btn-primary" >Editar</a>
          <form action="{{route('ter.destroy',$producto->id)}}" method="post" class="d-inline">

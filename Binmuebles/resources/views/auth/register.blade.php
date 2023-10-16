@@ -56,7 +56,7 @@
                             </div>
                             @endif
                             <div class="mb-3">
-                                <label for "emailInput" class="form-label">Email</label>
+                                <label for="emailInput" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="emailInput" name="email" required autocomplete="off">
                             </div>
                             <div class="mb-3">
