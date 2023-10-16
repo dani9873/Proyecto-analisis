@@ -20,14 +20,23 @@
                 <li><a href="#about">Acerca de Nosotros</a></li>
                 <li><a href="#gerentes">Gerentes</a></li>
                 <li><a href="#citas">Citas</a></li>
-                <li><button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    Notificaciones
-                  </button>
-                  
-                  </li>
+                <li>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                        Notificaciones
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Iniciar Sesión
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registroModal">
+                        Registrarse
+                    </button>
+                </li>
             </ul>
-            
-        </nav>
+        </nav>        
         
         <div class="search-bar">
             <input type="text" placeholder="Buscar propiedades">
@@ -37,6 +46,38 @@
     <main class="flex-fill">
         @yield('content')
     </main>
+<!-- Modal para Iniciar Sesión -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl"> <!-- Aquí se aplica la clase modal-xl -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido de la vista de inicio de sesión, por ejemplo: -->
+                @include('auth.login')
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Registrarse -->
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl"> <!-- Aquí se aplica la clase modal-xl -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registroModalLabel">Registrarse</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido de la vista de registro, por ejemplo: -->
+                @include('auth.register')
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 <footer class="footer bg-dark text-white mt-5">

@@ -31,28 +31,17 @@
                                 <button type="submit" class="btn btn-danger" >Borrar</a>
                             </form>
                         </div>
-
                     </div>
-                    
-                    
                 </p>
-                
             </div>
             @endforeach
-           
-            <!-- Agrega más imágenes y tarjetas de propiedades aquí -->
         </div>
-        
-
         <div id="creacion" style="display: none;">
             <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-
-
                 <div class="shadow p-3 mb-5 bg-body rounded w-50 p-3 bg-light mt-5">
                     <div class="d-flex justify-content-between">
                         <h2 >Crear Nuevo mueble</h2>
                         <a class="float-end"> <button id="salir" type="button" class="btn btn-danger">salir</button></a>
-                
                     </div>
                     <form id="crea" class="row g-3" method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
                         @csrf
@@ -67,9 +56,7 @@
                         <div class="form-group">       
                             <label for="precio" class="form-label">Precio:</label>
                             <input type="number" class="form-control" id="precio" name="precio"/>   
-                        </div>
-                    
-                        
+                        </div>                        
                         <div class="form-group">       
                             <label for="ubicacion" class="form-label">Ubicacion:</label>
                             <input type="text" class="form-control" id="ubicacion" name="ubicacion"/>   

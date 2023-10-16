@@ -19,9 +19,6 @@ use App\Http\Controllers\Productscontroller;
 */
 
 //RUTAS ANDY
-Route::get('/', function () {
-    return view('ter.index');
-});
 Route::resource('/products',Productscontroller::class);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,11 +32,12 @@ Route::middleware('auth')->group(function () {
 
 
 //RUTAS LOGIN
+
 Route::get('/privada', function () {
     return view('privada');
 })->middleware(['auth', 'verified'])->name('privada');
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('products.index');
 });
 Route::middleware(['auth'])->group(function () {
     Route::view('/privada', 'secret')->name('privada');
@@ -50,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/registro', 'register')->name('registro');
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');

@@ -13,8 +13,6 @@ class Productscontroller extends Controller
      */
     public function index()
     {
-       
-
         $products = Products::all();
         return view('vistareg', ['products' => $products]);
     }
