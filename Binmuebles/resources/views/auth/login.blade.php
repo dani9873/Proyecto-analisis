@@ -120,7 +120,9 @@
                             <h2 class="text-center">Inicio de Sesión</h2>
                             <form method="POST" action="{{ route('inicia-sesion') }}" class="login-form">
                                 @csrf
-                                <img src="{{ asset('img/logo.png') }}" alt="Logo de la Empresa" class="img-fluid mb-3">
+                                <div class="text-center mb-3">
+                                    <img src="{{ asset('img/LOGO.png') }}" alt="Logo de la Empresa" style="max-width: 150px;">
+                                </div>
                                 <div class="mb-3">
                                     <label for="emailInput" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="emailInput" name="email" required>

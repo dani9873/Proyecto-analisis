@@ -46,7 +46,9 @@
                         </div>
                         @endif
                         <form method="POST" action="{{route('validar-registro')}}" class="animate__animated animate__fadeInUp">
-                            <img src="{{ asset('img/logo.png') }}" alt="Logo de la Empresa" class="img-fluid">
+                            <div class="text-center mb-3">
+                                <img src="{{ asset('img/LOGO.png') }}" alt="Logo de la Empresa" style="max-width: 150px;">
+                            </div>
                             @csrf
                             @if(Session::has('registration_error'))
                             <div class="alert alert-danger mt-3">
