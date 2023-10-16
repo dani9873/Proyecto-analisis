@@ -33,10 +33,19 @@
                             <button type="submit" class="btn btn-link">Cerrar sesión</button>
                         </form>
                     </li>
-                </ul>
+                    @auth
+                    <li class="nav-item ml-2">
+                        <span class="nav-link">Bienvenido, {{ Auth::user()->name }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link">Tipo: {{ Auth::user()->user_type }}</span>
+                    </li>
+                    @endauth
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    
 
     <main class="container text-center py-5">
         <h1 class="display-4 mb-4">Clientes</h1>
