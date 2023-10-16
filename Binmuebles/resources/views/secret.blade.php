@@ -35,10 +35,10 @@
                     </li>
                     @auth
                     <li class="nav-item ml-2">
-                        <span class="nav-link">Bienvenido, {{ Auth::user()->name }}</span>
+                        <span class="nav-link">Hola, Bienvenido {{ Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item">
-                        <span class="nav-link">Tipo: {{ Auth::user()->user_type }}</span>
+                        <span class="nav-link">Tipo:  {{ Auth::user()->user_type }}</span>
                     </li>
                     @endauth
                     </ul>
