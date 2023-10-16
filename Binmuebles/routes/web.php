@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Productscontroller;
+use App\Http\Controllers\Products2controller;
 
 
 
@@ -27,7 +28,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+//RUTAS DANI Y BRIAN
+Route::resource('vista_terre/ter',Products2controller::class); 
 
 
 
@@ -47,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/products', [Productscontroller::class, 'index'])->name('products.index');
 
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/registro', 'register')->name('registro');

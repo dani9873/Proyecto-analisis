@@ -61,15 +61,16 @@ class LoginController extends Controller
     }  
 
 
-public function logout(Request $request)
-{
-    Auth::logout();
-
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-
-    return redirect('login');
-}
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return redirect(route('login')); // Redirige a la página de inicio de sesión
+    }
+    
 
     public function login(Request $request)
 {
@@ -81,10 +82,10 @@ public function logout(Request $request)
 
     if (Auth::attempt($credentials, $remember)) {
         $request->session()->regenerate();
-        return redirect()->intended(route('privada'));
+        return redirect()->intended(route('products.index'));
     } else {
         // Agregar un mensaje de error
-        return redirect()->route('login')->with('login_error', 'Correo o contraseña incorrectos');
+        return redirect()->route('products.index')->with('login_error', 'Correo o contraseña incorrectos');
     }
 }
     /**

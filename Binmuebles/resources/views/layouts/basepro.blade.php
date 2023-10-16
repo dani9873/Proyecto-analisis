@@ -25,19 +25,22 @@
                         Notificaciones
                     </button>
                 </li>
-                <li>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        Iniciar Sesión
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registroModal">
-                        Registrarse
-                    </button>
-                </li>
             </ul>
+            @auth
+            <li class="nav-item ml-2">
+                <span class="nav-link welcome-text">Hola, Bienvenido {{ Auth::user()->name }}</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link welcome-text">Tipo:  {{ Auth::user()->user_type }}</span>
+            </li>
+            <li class="nav-item ml-auto text-danger">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-link">Cerrar sesión</button>
+                </form>
+            </li>
+            @endauth
         </nav>        
-        
         <div class="search-bar">
             <input type="text" placeholder="Buscar propiedades">
             <button>Buscar</button>
