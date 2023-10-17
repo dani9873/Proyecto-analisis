@@ -76,7 +76,6 @@
                             </div>    
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Registrarse</button>
-                                <a href="/login" class="btn btn-danger ms-2">Regresar</a>
                             </div>                        
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.basepro')
 @section('content')
 <div>
-    <a href="{{ route('ter.index') }}" class="btn btn-primary">Regresar a Index</a>
+    <a href="{{ route('ter.index') }}" class="btn btn-primary">Regresar</a>
 </div>
 
 <h2>Crear nuevo inmueble</h2>

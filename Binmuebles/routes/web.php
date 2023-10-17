@@ -28,12 +28,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });  
 
+
+//Dani controller
 Route::resource('/binmueble', RealStateController::class);
 
 
 //RUTAS DANI Y BRIAN
 Route::resource('vista_terre/ter',Products2controller::class); 
+Route::get('/contacto', function () {
+    return view('contacto');
+})->name('contacto');
 
+Route::get('/citas', function () {
+    return view('citas');
+})->name('citas');
+
+Route::get('/acercanosotros', function () {
+    return view('acercanosotros');
+})->name('acercanosotros');
 
 
 //RUTAS LOGIN

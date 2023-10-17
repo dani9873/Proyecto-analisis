@@ -5,7 +5,7 @@
 <div>
    <h2>Editar Estudiante</h2>
    <div>
-       <a href="{{route('ter.index')}}" class="btn btn-primary" >Regresar a Index</a>
+       <a href="{{route('ter.index')}}" class="btn btn-primary" >Regresar</a>
    </div>
 
 
