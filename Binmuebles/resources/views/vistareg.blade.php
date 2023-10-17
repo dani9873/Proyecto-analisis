@@ -29,28 +29,21 @@
 </div>
 
 <div class="image-gallery">
-    @foreach($products as $product)
-    <div class="image-card">
-        <p>{{$product->id}}</p>
-        <h2>{{$product->nombre}}</h2>
-        <p>{{$product->descripcion}}</p>
-        <p>{{$product->precio}}</p>
-        <p><img style="width: 100px; height: auto;" src="{{ asset('storage/images/'. $producto->demostracion) }}" alt="Demostración del producto"></p>
-        <p>
-            <div class="row align-items-center">
-                <div class="col">
-                    <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary">editar</a>
-                </div>
-                <div class="col">
-                    <form action="{{route('products.destroy',$product->id)}}" method="post" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Borrar</button>
-                    </form>
-                </div>
-            </div>
-        </p>
-    </div>
+    @foreach($products as $producto)
+    <tr>
+        <th scope="row">{{$producto->id}}</th>
+        <td>{{$producto->nombre}}</td>
+        <td>{{$producto->descripcion}}</td>
+        <td>{{$producto->precio}}</td>
+
+        <td>
+         <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
+         </td>
+         <td>
+            <img style="width: 100px; height: auto;" src="{{ asset('storage/images/'. $producto->demostracion) }}" alt="Demostración del producto">
+   
+            <td>
+            </td>
     @endforeach
 </div>
 
