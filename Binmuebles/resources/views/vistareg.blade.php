@@ -40,10 +40,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
-                        @auth
                         <th scope="col">Descripcion</th>
-                        @else
-                        @endauth
                         <th scope="col">Precio</th>
                         <th scope="col">Ubicacion</th>
                         <th scope="col">Fotos</th>
@@ -59,7 +56,7 @@
                                 @auth
                                     {{ $producto->descripcion }}
                                 @else
-                                    Inicia Sesión para visualizar la descripción
+                                    <span class="text-danger">Inicia Sesión para visualizar la descripción</span>
                                 @endauth
                             </td>
                             <td>{{ $producto->precio }}</td>
@@ -67,7 +64,7 @@
                                 <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
                             </td>
                             <td>
-                                <img style="width: 250px; height: auto;" src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto">
+                                <img style="width: 100px; height: auto;" src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto">
                             </td>
                             <td></td>
                         </tr>
