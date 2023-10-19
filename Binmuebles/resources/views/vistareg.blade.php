@@ -2,72 +2,46 @@
 
 @section('content')
     <div class="row align-items-center">
-        <div class="row justify-content-end">
-            <div class="col text-end">
-                @auth
-                    <!-- Si el usuario está autenticado, no mostrar los botones -->
-                @else
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        Iniciar Sesión
-                    </button>
-                    <button type="button" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#registroModal">
-                        Registrarse
-                    </button>
-                @endauth
-            </div>
-        </div>
-        <div class="col">
-            <h2>Inmuebles</h2>
-        </div>
-        <div class="col text-end">
-            @auth
-                @if (auth()->user()->user_type !== 'normal')
-                    <a href="{{ route('ter.create') }}" class="btn btn-primary">Publicar Propiedades</a>
-                @else
-                    <div class="alert alert-warning mt-3">
-                        No tienes permiso para publicar propiedades.
-                    </div>
-                @endif
-            @else
-                <a href="{{ route('ter.create') }}" class="btn btn-primary disabled">Publicar Propiedades</a>
-            @endauth
-        </div>
-    </div>
+        <!-- Resto de tu contenido -->
 
-    <div class="image-gallery">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Ubicacion</th>
-                    <th scope="col">Fotos</th>
-                    <th scope="col">Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $producto)
+        <div class="image-gallery">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">{{ $producto->id }}</th>
-                        <td>{{ $producto->nombre }}</td>
-                        <td>{{ $producto->descripcion }}</td>
-                        <td>{{ $producto->precio }}</td>
-
-                        <td>
-                            <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
-                        </td>
-                        <td>
-                            <img style="width: 100px; height: auto;"
-                                src="{{ asset('storage/images/' . $producto->demostracion) }}"
-                                alt="Demostración del producto">
-
-                        <td>
-                        </td>
-                @endforeach
-        </table>
-    </div>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Ubicacion</th>
+                        <th scope="col">Fotos</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($products as $producto)
+                        <tr>
+                            <th scope="row">{{ $producto->id }}</th>
+                            <td>{{ $producto->nombre }}</td>
+                            <td>
+                                @auth
+                                    {{ $producto->descripcion }}
+                                @else
+                                    Inicia Sesión para visualizar la descripción
+                                @endauth
+                            </td>
+                            <td>{{ $producto->precio }}</td>
+                            <td>
+                                <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
+                            </td>
+                            <td>
+                                <img style="width: 250px; height: auto;" src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto">
+                            </td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
     <div class="notification" id="notification">
         <button id="closeNotification" class="close-button">
