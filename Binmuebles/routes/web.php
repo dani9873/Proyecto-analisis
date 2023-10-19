@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealStateController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,10 @@ use App\Http\Controllers\Products2controller;
 |
 */
 
+//RUTAS CITAS FRANK
+Route::get('/citas', [CitaController::class, 'index'])->name('citas');
+Route::post('/citas', [CitaController::class, 'store'])->name('citas.store'); // Agregamos una nueva ruta para el método POST
+
 //RUTAS ANDY
 Route::resource('/products',Productscontroller::class);
 Route::middleware('auth')->group(function () {
@@ -27,12 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });  
-
-
 //Dani controller
 Route::resource('/binmueble', RealStateController::class);
-
-
 //RUTAS DANI Y BRIAN
 Route::resource('vista_terre/ter',Products2controller::class); 
 Route::get('/contacto', function () {
@@ -46,8 +47,6 @@ Route::get('/citas', function () {
 Route::get('/acercanosotros', function () {
     return view('acercanosotros');
 })->name('acercanosotros');
-
-
 //RUTAS LOGIN
 Route::get('/privada', function () {
     return view('privada');

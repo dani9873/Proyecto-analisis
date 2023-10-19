@@ -10,24 +10,19 @@ class CitaController extends Controller
     public function index()
     {
         $citas = Cita::all();
-        return view('citas.index', compact('citas'));
-    }
-
-    public function create()
-    {
-        return view('citas.create');
+        $data['citas'] = $citas;
+        return view('citas', $data);
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nombre' => 'required',
-            'instrucciones' => 'nullable',
-            'fecha' => 'required|date',
-        ]);
-
-        Cita::create($data);
-
-        return redirect()->route('citas.index')->with('success', 'Cita agendada con éxito.');
+        $cita = new Cita();
+        $cita->nombre = $request->nombre;
+        $cita->instrucciones = $request->instrucciones;
+        $cita->fecha = $request->fecha;
+        $cita->save();
+    
+        return redirect()->back()->with('success', 'Cita agendada con éxito.');
     }
+    
 }
