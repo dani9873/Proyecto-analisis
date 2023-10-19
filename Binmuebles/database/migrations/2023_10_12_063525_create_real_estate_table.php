@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion');
-            $table->string('tipo'); 
+            $table->string('tipo', ['Casa', 'Lote', 'Edificio']); 
             $table->string('imagen');
-            $table->enum('estado', ['alquiler', 'venta']); 
+            $table->enum('estado', ['Alquiler', 'venta']); 
             $table->string('ubicacion_general');
             $table->string('disponibilidad');
             $table->float('precio_venta', 10, 2)->nullable(); 

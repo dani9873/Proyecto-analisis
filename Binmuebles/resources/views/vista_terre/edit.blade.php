@@ -35,16 +35,39 @@
                     <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ $product->descripcion }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="precio">Precio:</label>
-                    <input type="text" class="form-control" id="precio" name="precio" value="{{ $product->precio }}" required>
+                    <label for="precio_venta">Precio de Venta:</label>
+                    <input type="text" class="form-control" id="precio_venta" name="precio_venta" value="{{ $product->precio_venta }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="ubicacion">Ubicación:</label>
-                    <input type="url" class="form-control" id="ubicacion" name="ubicacion" value="{{ $product->ubicacion }}" required>
+                    <label for="precio_alquiler">Precio de Alquiler:</label>
+                    <input type="text" class="form-control" id="precio_alquiler" name="precio_alquiler" value="{{ $product->precio_alquiler }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="demostracion">Subir Fotos:</label>
-                    <input type="file" class="form-control-file" id="demostracion" name="demostracion" value="{{ $product->demostracion }}" accept="image/*" multiple>
+                    <label for="ubicacion_general">Ubicación General:</label>
+                    <input type="url" class="form-control" id="ubicacion_general" name="ubicacion_general" value="{{ $product->ubicacion_general }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Subir Fotos:</label>
+                    <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    <select class="form-control" id="tipo" name="tipo">
+                        <option value="Casa" {{ $product->tipo == 'Casa' ? 'selected' : '' }}>Casa</option>
+                        <option value="Lote" {{ $product->tipo == 'Lote' ? 'selected' : '' }}>Lote</option>
+                        <option value="Edificio" {{ $product->tipo == 'Edificio' ? 'selected' : '' }}>Edificio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select class="form-control" id="estado" name="estado">
+                        <option value="Alquiler" {{ $product->estado == 'Alquiler' ? 'selected' : '' }}>Alquiler</option>
+                        <option value="Venta" {{ $product->estado == 'Venta' ? 'selected' : '' }}>Venta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="disponibilidad">Disponibilidad:</label>
+                    <input type="text" class="form-control" id="disponibilidad" name="disponibilidad" value="{{ $product->disponibilidad }}" required>
                 </div>
                 <button type="submit" class="btn btn-success">Actualizar</button>
                 <a href="{{ route('ter.index') }}" class="btn btn-primary" style="margin-left: 10px;">Regresar</a>
