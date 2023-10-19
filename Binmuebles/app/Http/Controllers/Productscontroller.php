@@ -33,20 +33,28 @@ class Productscontroller extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
-            'precio' => 'required',
-            'ubicacion' => 'required|url',
-            'demostracion' => 'required|image', // Validación para asegurarse de que sea una imagen
+            'imagen' => 'required|image', // Cambiado a 'imagen'
+            'tipo' => 'required', // Agregado el campo 'tipo'
+            'estado' => 'required', // Agregado el campo 'estado'
+            'ubicacion_general' => 'required|url',
+            'disponibilidad' => 'required',
+            'precio_venta' => 'numeric|nullable', // Cambiado a 'numeric'
+            'precio_alquiler' => 'numeric|nullable', // Cambiado a 'numeric'
         ]);
 
-        $imagePath = $request->file('demostracion')->store('public/images');
+        $imagePath = $request->file('imagen')->store('public/images');
         $imageName = basename($imagePath);
-
+        
         $product = new Products([
             'nombre' => $validatedData['nombre'],
             'descripcion' => $validatedData['descripcion'],
-            'precio' => $validatedData['precio'],
-            'ubicacion' => $validatedData['ubicacion'],
-            'demostracion' => $imageName,
+            'imagen' => $imageName,
+            'tipo' => $validatedData['tipo'],
+            'estado' => $validatedData['estado'],
+            'ubicacion_general' => $validatedData['ubicacion_general'],
+            'disponibilidad' => $validatedData['disponibilidad'],
+            'precio_venta' => $validatedData['precio_venta'],
+            'precio_alquiler' => $validatedData['precio_alquiler'],
         ]);
 
         $product->save();
@@ -77,15 +85,36 @@ class Productscontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $produ = products::find($id);
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'imagen' => 'image|nullable', // Cambiado a 'imagen'
+            'tipo' => 'required', // Agregado el campo 'tipo'
+            'estado' => 'required', // Agregado el campo 'estado'
+            'ubicacion_general' => 'required|url',
+            'disponibilidad' => 'required',
+            'precio_venta' => 'numeric|nullable', // Cambiado a 'numeric'
+            'precio_alquiler' => 'numeric|nullable', // Cambiado a 'numeric'
+        ]);
 
-        $produ->nombre = $request->nombre;
-        $produ->descripcion = $request->descripcion;
-        $produ->precio = $request->precio;
-        $produ->ubicacion = $request->ubicacion;
-        $produ->demostracion = $request->demostracion;
+        $product = Products::find($id);
 
-        $produ->update();  
+        $product->nombre = $request->nombre;
+        $product->descripcion = $request->descripcion;
+        $product->tipo = $request->tipo;
+        $product->estado = $request->estado;
+        $product->ubicacion_general = $request->ubicacion_general;
+        $product->disponibilidad = $request->disponibilidad;
+        $product->precio_venta = $request->precio_venta;
+        $product->precio_alquiler = $request->precio_alquiler;
+
+        if ($request->hasFile('imagen')) {
+            $imagePath = $request->file('imagen')->store('public/images');
+            $imageName = basename($imagePath);
+            $product->imagen = $imageName;
+        }
+
+        $product->save();
 
         return redirect()->route('products.index');
     }

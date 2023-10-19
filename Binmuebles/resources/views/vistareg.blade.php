@@ -49,14 +49,19 @@
                                 <span class="text-danger">Inicia Sesión para visualizar la descripción</span>
                             @endauth
                         </p>
-                        <p class="price">Precio: <span class="price-red">{{ $producto->precio }}</span></p>
+                        <p class="type">Tipo: {{ $producto->tipo }}</p>
+                        <div class="post-image">
+                            <img src="{{ asset('storage/images/' . $producto->imagen) }}" alt="Demostración del producto" class="image-flash">
+                        </div>
+                        <p class="state">Estado: {{ $producto->estado }}</p>
+                        <p class="availability">Disponibilidad: {{ $producto->disponibilidad }}</p>
                         <p class="location">
-                            <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
+                            <a href="{{ $producto->ubicacion_general }}" target="_blank">{{ $producto->ubicacion_general }}</a>
                         </p>
+                        <p class="price">Precio de Venta: <span class="price-red">{{ $producto->precio_venta }}</span></p>
+                        <p class="price">Precio de Alquiler: <span class="price-red">{{ $producto->precio_alquiler }}</span></p>
                     </div>
-                    <div class="post-image">
-                        <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash">
-                    </div>
+                    
                 </div>
             @endforeach
                 </tbody>
@@ -73,119 +78,119 @@
     </div>
 
     <style>
-        /* Estilos para la publicación estilo Facebook */
-    .post-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center; /* Centra verticalmente las publicaciones */
-        align-items: center; /* Centra horizontalmente las publicaciones */
-        max-width: 800px; /* Establece un ancho máximo para las publicaciones */
-        margin: 0 auto; /* Centra el contenedor de las publicaciones en la pantalla */
-    }
-
-    .post {
-        border: 1px solid #ddd;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        width: 100%; /* Las publicaciones ocupan todo el ancho del contenedor */
-        max-width: 800px; /* Establece un ancho máximo para las publicaciones */
-    }
-
-    .post-header h3 {
-        font-size: 1.5rem;
-    }
-
-    .post-content {
-        font-size: 1rem;
-    }
-
-    .description {
-        color: #000;
-    }
-
-    .price {
-        color: #000;
-        font-weight: bold;
-    }
-
-    .price-red {
-        color: red;
-    }
-
-    .location {
-        color: #000;
-    }
-
-    .post-image img {
-        max-width: 100%;
-        height: auto;
-    }
-
-        .notification {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            /* Fondo con transparencia */
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-            text-align: center;
-            /* Centra el texto */
-            padding-right: 40px;
-            /* Añade espacio para la "x" de cierre */
-            animation: pulse 1s infinite;
-            /* Agrega una animación de pulsación */
-        }
-
-        .close-button {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            position: absolute;
-            top: 5px;
-            right: 10px;
-        }
-
-        .circle {
-            background-color: #000;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
+            /* Estilos para la publicación estilo Facebook */
+        .post-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center; /* Centra verticalmente las publicaciones */
+            align-items: center; /* Centra horizontalmente las publicaciones */
+            max-width: 800px; /* Establece un ancho máximo para las publicaciones */
+            margin: 0 auto; /* Centra el contenedor de las publicaciones en la pantalla */
         }
 
-        .x {
-            font-size: 20px;
-            color: #fff;
-            position: relative;
+        .post {
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 100%; /* Las publicaciones ocupan todo el ancho del contenedor */
+            max-width: 800px; /* Establece un ancho máximo para las publicaciones */
         }
 
-        /* Define la animación de pulsación */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+        .post-header h3 {
+            font-size: 1.5rem;
         }
+
+        .post-content {
+            font-size: 1rem;
+        }
+
+        .description {
+            color: #000;
+        }
+
+        .price {
+            color: #000;
+            font-weight: bold;
+        }
+
+        .price-red {
+            color: red;
+        }
+
+        .location {
+            color: #000;
+        }
+
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+            .notification {
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.7);
+                /* Fondo con transparencia */
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                display: none;
+                text-align: center;
+                /* Centra el texto */
+                padding-right: 40px;
+                /* Añade espacio para la "x" de cierre */
+                animation: pulse 1s infinite;
+                /* Agrega una animación de pulsación */
+            }
+
+            .close-button {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 18px;
+                cursor: pointer;
+                position: absolute;
+                top: 5px;
+                right: 10px;
+            }
+
+            .circle {
+                background-color: #000;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .x {
+                font-size: 20px;
+                color: #fff;
+                position: relative;
+            }
+
+            /* Define la animación de pulsación */
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
     </style>
 
 

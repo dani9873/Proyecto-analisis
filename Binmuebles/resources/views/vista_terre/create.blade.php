@@ -33,16 +33,39 @@
                     <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                 </div>
                 <div class="form-group">
-                    <label for="precio">Precio:</label>
-                    <input type="text" class="form-control" id="precio" name="precio" required>
-                </div>
-                <div class="form-group">
-                    <label for="ubicacion">Ubicación:</label>
-                    <input type="url" class="form-control" id="ubicacion" name="ubicacion" required>
+                    <label for="tipo">Tipo:</label>
+                    <select class="form-control" id="tipo" name="tipo">
+                        <option value="Casa">Casa</option>
+                        <option value="Lote">Lote</option>
+                        <option value="Edificio">Edificio</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Subir foto:</label>
-                    <input type="file" class="form-control-file" accept="image/*" name="demostracion" multiple>
+                    <input type="file" class="form-control-file" accept="image/*" name="imagen" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select class="form-control" id="estado" name="estado">
+                        <option value="Alquiler">Alquiler</option>
+                        <option value="Venta">Venta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ubicacion_general">Ubicación General:</label>
+                    <input type="url" class="form-control" id="ubicacion_general" name="ubicacion_general" required>
+                </div>
+                <div class="form-group">
+                    <label for="disponibilidad">Disponibilidad:</label>
+                    <input type="text" class="form-control" id="disponibilidad" name="disponibilidad" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio_venta">Precio de Venta:</label>
+                    <input type="text" class="form-control" id="precio_venta" name="precio_venta" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio_alquiler">Precio de Alquiler:</label>
+                    <input type="text" class="form-control" id="precio_alquiler" name="precio_alquiler" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="{{ route('ter.index') }}" class="btn btn-primary" style="margin-left: 10px;">Visualizar Publicaciones</a>

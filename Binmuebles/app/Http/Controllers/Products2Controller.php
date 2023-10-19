@@ -33,20 +33,28 @@ class Products2controller extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
-            'precio' => 'required',
-            'ubicacion' => 'required|url',
-            'demostracion' => 'required|image', // Validación para asegurarse de que sea una imagen
+            'imagen' => 'required|image', // Cambiado a 'imagen'
+            'tipo' => 'required', // Agregado el campo 'tipo'
+            'estado' => 'required', // Agregado el campo 'estado'
+            'ubicacion_general' => 'required|url',
+            'disponibilidad' => 'required',
+            'precio_venta' => 'required', // Cambiado a 'numeric'
+            'precio_alquiler' => 'required', // Cambiado a 'numeric'
         ]);
 
-        $imagePath = $request->file('demostracion')->store('public/images');
+        $imagePath = $request->file('imagen')->store('public/images');
         $imageName = basename($imagePath);
         
         $product = new Products([
             'nombre' => $validatedData['nombre'],
             'descripcion' => $validatedData['descripcion'],
-            'precio' => $validatedData['precio'],
-            'ubicacion' => $validatedData['ubicacion'],
-            'demostracion' => $imageName,
+            'imagen' => $imageName,
+            'tipo' => $validatedData['tipo'],
+            'estado' => $validatedData['estado'],
+            'ubicacion_general' => $validatedData['ubicacion_general'],
+            'disponibilidad' => $validatedData['disponibilidad'],
+            'precio_venta' => $validatedData['precio_venta'],
+            'precio_alquiler' => $validatedData['precio_alquiler'],
         ]);
 
         $product->save();
@@ -79,21 +87,30 @@ class Products2controller extends Controller
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
-            'precio' => 'required',
-            'ubicacion' => 'required|url',
+            'imagen' => 'image|nullable', // Cambiado a 'imagen'
+            'tipo' => 'required', // Agregado el campo 'tipo'
+            'estado' => 'required', // Agregado el campo 'estado'
+            'ubicacion_general' => 'required|url',
+            'disponibilidad' => 'required',
+            'precio_venta' => 'required', // Cambiado a 'numeric'
+            'precio_alquiler' => 'required', // Cambiado a 'numeric'
         ]);
 
         $product = Products::find($id);
 
         $product->nombre = $request->nombre;
         $product->descripcion = $request->descripcion;
-        $product->precio = $request->precio;
-        $product->ubicacion = $request->ubicacion;
+        $product->tipo = $request->tipo;
+        $product->estado = $request->estado;
+        $product->ubicacion_general = $request->ubicacion_general;
+        $product->disponibilidad = $request->disponibilidad;
+        $product->precio_venta = $request->precio_venta;
+        $product->precio_alquiler = $request->precio_alquiler;
 
-        // Si se proporciona una nueva imagen, procesa la carga y actualiza el campo demostracion
-        if ($request->hasFile('demostracion')) {
-            $imageName = $request->file('demostracion')->store('storage/app/public/images');
-            $product->demostracion = $imageName;
+        if ($request->hasFile('imagen')) {
+            $imagePath = $request->file('imagen')->store('public/images');
+            $imageName = basename($imagePath);
+            $product->imagen = $imageName;
         }
 
         $product->save();
