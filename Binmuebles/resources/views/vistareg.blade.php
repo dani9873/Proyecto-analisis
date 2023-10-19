@@ -42,6 +42,7 @@
                         <h3>{{ $producto->nombre }}</h3>
                     </div>
                     <div class="post-content">
+                        <!-- Mostrar la descripción completa -->
                         <p class="description">
                             @auth
                                 {{ $producto->descripcion }}
@@ -55,13 +56,43 @@
                         </p>
                     </div>
                     <div class="post-image">
+                        <!-- Agregar el botón para abrir la vista detallada si el usuario está autenticado -->
+                        @auth
+                            <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#detalleModal">
+                                Ver Detalles
+                            </button>
+                        @endauth
                         <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash">
                     </div>
                 </div>
             @endforeach
-                </tbody>
-            </table>
         </div>
+    </div>
+
+    <!-- Ventana modal para la vista detallada -->
+    <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Botón para cerrar la ventana modal -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h3 class="modal-title" id="detalleModalLabel">Detalles de la Publicación</h3>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido detallado de la publicación, incluyendo imagen, descripción completa y ubicación -->
+                    @foreach ($products as $producto)
+                        <div class="detalle-publicacion" style="display: none;">
+                            <h4>Nombre: {{ $producto->nombre }}</h4>
+                            <p class="descripcion-completa">Descripción: {{ $producto->descripcion }}</p>
+                            <p class="ubicacion">Ubicación: {{ $producto->ubicacion }}</p>
+                            <p class="demostrativa">Imagen Demostrativa.: <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash"></p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="notification" id="notification">
         <button id="closeNotification" class="close-button">
@@ -73,6 +104,20 @@
     </div>
 
     <style>
+        /* Estilos para la vista detallada en la ventana modal */
+        .detalle-publicacion {
+            text-align: center;
+        }
+
+        .detalle-publicacion img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .descripcion-completa {
+            font-size: 1rem;
+            color: #000;
+        }
         /* Estilos para la publicación estilo Facebook */
     .post-container {
         display: flex;
@@ -190,6 +235,25 @@
 
 
     <script>
+        // JavaScript para mostrar la publicación detallada en la ventana modal
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+                const detallePublicaciones = document.querySelectorAll('.detalle-publicacion');
+
+                viewDetailsButtons.forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                        // Ocultar todas las publicaciones detalladas
+                        detallePublicaciones.forEach((detalle) => {
+                            detalle.style.display = 'none';
+                        });
+
+                        // Mostrar la publicación detallada correspondiente
+                        detallePublicaciones[index].style.display = 'block';
+            });
+        });
+
+
+        //SIGUIENTE
+
         // Verifica si el usuario está autenticado
         const userIsAuthenticated = @json(auth()->check());
 
