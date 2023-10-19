@@ -34,41 +34,31 @@
         </div>
     </div>
 
-        <div class="image-gallery">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Ubicacion</th>
-                        <th scope="col">Fotos</th>
-                        <th scope="col">Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($products as $producto)
-                        <tr>
-                            <th scope="row">{{ $producto->id }}</th>
-                            <td>{{ $producto->nombre }}</td>
-                            <td>
-                                @auth
-                                    {{ $producto->descripcion }}
-                                @else
-                                    <span class="text-danger">Inicia Sesión para visualizar la descripción</span>
-                                @endauth
-                            </td>
-                            <td>{{ $producto->precio }}</td>
-                            <td>
-                                <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
-                            </td>
-                            <td>
-                                <img style="width: 100px; height: auto;" src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto">
-                            </td>
-                            <td></td>
-                        </tr>
-                    @endforeach
+    <div class="image-gallery">
+        <div class="post-container">
+            @foreach ($products as $producto)
+                <div class="post">
+                    <div class="post-header">
+                        <h3>{{ $producto->nombre }}</h3>
+                    </div>
+                    <div class="post-content">
+                        <p class="description">
+                            @auth
+                                {{ $producto->descripcion }}
+                            @else
+                                <span class="text-danger">Inicia Sesión para visualizar la descripción</span>
+                            @endauth
+                        </p>
+                        <p class="price">Precio: <span class="price-red">{{ $producto->precio }}</span></p>
+                        <p class="location">
+                            <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
+                        </p>
+                    </div>
+                    <div class="post-image">
+                        <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash">
+                    </div>
+                </div>
+            @endforeach
                 </tbody>
             </table>
         </div>
@@ -83,6 +73,56 @@
     </div>
 
     <style>
+        /* Estilos para la publicación estilo Facebook */
+    .post-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center; /* Centra verticalmente las publicaciones */
+        align-items: center; /* Centra horizontalmente las publicaciones */
+        max-width: 800px; /* Establece un ancho máximo para las publicaciones */
+        margin: 0 auto; /* Centra el contenedor de las publicaciones en la pantalla */
+    }
+
+    .post {
+        border: 1px solid #ddd;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        width: 100%; /* Las publicaciones ocupan todo el ancho del contenedor */
+        max-width: 800px; /* Establece un ancho máximo para las publicaciones */
+    }
+
+    .post-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .description {
+        color: #000;
+    }
+
+    .price {
+        color: #000;
+        font-weight: bold;
+    }
+
+    .price-red {
+        color: red;
+    }
+
+    .location {
+        color: #000;
+    }
+
+    .post-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
         .notification {
             position: fixed;
             top: 50%;
