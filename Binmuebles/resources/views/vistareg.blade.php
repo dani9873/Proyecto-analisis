@@ -2,7 +2,37 @@
 
 @section('content')
     <div class="row align-items-center">
-        <!-- Resto de tu contenido -->
+        <div class="row justify-content-end">
+            <div class="col text-end">
+                @auth
+                    <!-- Si el usuario está autenticado, no mostrar los botones -->
+                @else
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Iniciar Sesión
+                    </button>
+                    <button type="button" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#registroModal">
+                        Registrarse
+                    </button>
+                @endauth
+            </div>
+        </div>
+        <div class="col">
+            <h2>Inmuebles</h2>
+        </div>
+        <div class="col text-end">
+            @auth
+                @if (auth()->user()->user_type !== 'normal')
+                    <a href="{{ route('ter.create') }}" class="btn btn-primary">Publicar Propiedades</a>
+                @else
+                    <div class="alert alert-warning mt-3">
+                        No tienes permiso para publicar propiedades.
+                    </div>
+                @endif
+            @else
+                <a href="{{ route('ter.create') }}" class="btn btn-primary disabled">Publicar Propiedades</a>
+            @endauth
+        </div>
+    </div>
 
         <div class="image-gallery">
             <table class="table">
@@ -10,7 +40,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
+                        @auth
                         <th scope="col">Descripcion</th>
+                        @else
+                        @endauth
                         <th scope="col">Precio</th>
                         <th scope="col">Ubicacion</th>
                         <th scope="col">Fotos</th>
