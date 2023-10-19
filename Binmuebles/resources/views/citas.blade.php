@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="instrucciones">Instrucciones:</label>
-                    <textarea id="instrucciones" name "instrucciones" rows="3" class="form-control"></textarea>
+                    <textarea id="instrucciones" name="instrucciones" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="fecha">Fecha de la cita:</label>
