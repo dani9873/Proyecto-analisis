@@ -70,7 +70,6 @@
                                 Ver Detalles
                             </button>
                         @endauth
-                        <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash">
                     </div>                   
 
                 </div>
@@ -84,8 +83,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <!-- Botón para cerrar la ventana modal -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h3 class="modal-title" id="detalleModalLabel">Detalles de la Publicación</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Contenido detallado de la publicación, incluyendo imagen, descripción completa y ubicación -->
@@ -93,8 +92,13 @@
                         <div class="detalle-publicacion" style="display: none;">
                             <h4>Nombre: {{ $producto->nombre }}</h4>
                             <p class="descripcion-completa">Descripción: {{ $producto->descripcion }}</p>
-                            <p class="ubicacion">Ubicación: {{ $producto->ubicacion }}</p>
-                            <p class="demostrativa">Imagen Demostrativa.: <img src="{{ asset('storage/images/' . $producto->demostracion) }}" alt="Demostración del producto" class="image-flash"></p>
+                            <p class="ubicacion">Tipo: {{ $producto->tipo }}</p>
+                            <p class="ubicacion">Estado: {{ $producto->estado }}</p>
+                            <p class="ubicacion">Ubicación: {{ $producto->ubicacion_general }}</p>
+                            <p class="ubicacion">Disponibilidad: {{ $producto->disponibilidad }}</p>
+                            <p class="price">Precio de Venta: <span class="price-red">{{ $producto->precio_venta }}</span></p>
+                        <p class="price">Precio de Alquiler: <span class="price-red">{{ $producto->precio_alquiler }}</span></p>
+                            <p class="imagen">Imagen Demostrativa.: <img src="{{ asset('storage/images/' . $producto->imagen) }}" alt="Demostración del producto" class="image-flash"></p>
                         </div>
                     @endforeach
                 </div>
