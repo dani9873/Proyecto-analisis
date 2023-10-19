@@ -1,6 +1,6 @@
 @extends('layouts.basepro')
 @section('content')
-<h1>Vienes Raizes</h1>
+<h1>BIENES RAICES</h1>
 
 
 <div>

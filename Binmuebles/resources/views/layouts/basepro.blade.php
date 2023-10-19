@@ -6,7 +6,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/modificacionReg.css') }}">
-    
 </head>
 
 <body>
@@ -27,7 +26,7 @@
                             <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Inmuebles</a>
+                            <a class="nav-link" href="{{ route('ter.index') }}">Inmuebles</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('acercanosotros') }}">Acerca de Nosotros</a>
@@ -96,7 +95,7 @@
 
 </body>
 
-<footer class="footer bg-dark text-white mt-5">
+<footer class="footer bg-dark text-white mt-7">
     <div class="container">
         <div class="row">
             <div class="col-md-12 py-3">
