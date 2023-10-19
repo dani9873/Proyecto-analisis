@@ -37,7 +37,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('acercanosotros') }}">Acerca de Nosotros</a>
                         </li>
-                    
                             @if (Auth::user()->user_type !== 'normal')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('citas') }}">Citas</a>
