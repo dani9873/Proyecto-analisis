@@ -31,7 +31,7 @@
          <a href="{{ $producto->ubicacion }}" target="_blank">{{ $producto->ubicacion }}</a>
          </td>
         <td>
-         <img style="width: 100px; height: auto;" src="{{ asset('storage/images/'. $producto->demostracion) }}" alt="Demostración del producto">
+         <img style="width: 250px; height: auto;" src="{{ asset('storage/images/'. $producto->demostracion) }}" alt="Demostración del producto">
 
          <td>
          <a href="{{route('ter.edit',$producto->id)}} " class="btn btn-primary" >Editar</a>
