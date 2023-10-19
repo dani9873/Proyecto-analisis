@@ -45,7 +45,7 @@
                     <input type="file" class="form-control-file" accept="image/*" name="demostracion" multiple>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <a href="{{ route('ter.index') }}" class="btn btn-primary" style="margin-left: 10px;">Regresar</a>
+                <a href="{{ route('ter.index') }}" class="btn btn-primary" style="margin-left: 10px;">Visualizar Publicaciones</a>
             </form>
         </div>
     </main>
